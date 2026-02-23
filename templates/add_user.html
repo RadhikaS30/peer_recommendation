@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add New User</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-pink-100 via-white to-rose-100 dark:from-gray-900 dark:via-gray-800 dark:to-black min-h-screen flex flex-col items-center justify-center text-center font-sans transition-colors duration-500">
+
+  <!-- 🌙 Dark Mode Toggle -->
+  <button id="theme-toggle" class="absolute top-5 right-5 bg-rose-600 text-white px-3 py-1 rounded-lg hover:bg-rose-700 transition">
+    🌙 Dark Mode
+  </button>
+
+  <div class="bg-white dark:bg-gray-800 p-10 rounded-2xl shadow-2xl w-96 animate-fade-in">
+    <h2 class="text-3xl font-bold text-rose-600 dark:text-rose-300 mb-6">Add New Student</h2>
+    
+    <form method="POST" class="space-y-4">
+      <input type="text" name="name" placeholder="Name" required
+        class="w-full border-2 border-rose-300 rounded-lg p-2 focus:ring-2 focus:ring-rose-500 focus:outline-none transition dark:bg-gray-700 dark:text-white" />
+      <input type="email" name="email" placeholder="Email" required
+        class="w-full border-2 border-rose-300 rounded-lg p-2 focus:ring-2 focus:ring-rose-500 focus:outline-none transition dark:bg-gray-700 dark:text-white" />
+      <input type="text" name="interests" placeholder="Interests (comma separated)" required
+        class="w-full border-2 border-rose-300 rounded-lg p-2 focus:ring-2 focus:ring-rose-500 focus:outline-none transition dark:bg-gray-700 dark:text-white" />
+
+      <button type="submit"
+        class="bg-rose-600 text-white px-4 py-2 rounded-lg hover:bg-rose-700 transition transform hover:scale-105">Add User</button>
+    </form>
+
+    <div class="mt-6">
+      <a href="/" class="text-rose-500 hover:underline dark:text-rose-300">🏠 Back to Home</a>
+    </div>
+  </div>
+
+  <script>
+    // 🌙 Dark Mode Toggle Script
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      themeToggle.textContent = document.documentElement.classList.contains('dark') ? '☀️ Light Mode' : '🌙 Dark Mode';
+    });
+
+    // Fade-in animation
+    document.querySelector('.animate-fade-in').style.opacity = 0;
+    setTimeout(() => document.querySelector('.animate-fade-in').style.transition = 'opacity 1.5s ease-in', 50);
+    setTimeout(() => document.querySelector('.animate-fade-in').style.opacity = 1, 100);
+  </script>
+</body>
+</html>

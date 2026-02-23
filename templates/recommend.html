@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Recommended Peers</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-pink-100 via-white to-rose-100 dark:from-gray-900 dark:via-gray-800 dark:to-black 
+             min-h-screen flex flex-col items-center justify-center text-center font-sans transition-colors duration-500">
+
+  <!-- Dark Mode Toggle -->
+  <button id="theme-toggle"
+    class="absolute top-5 right-5 bg-rose-600 text-white px-3 py-1 rounded-lg hover:bg-rose-700 transition">
+    🌙 Dark Mode
+  </button>
+
+  <div class="bg-white dark:bg-gray-800 p-10 rounded-2xl shadow-2xl w-96 animate-fade-in">
+    <h2 class="text-3xl font-bold text-rose-600 dark:text-rose-300 mb-4">
+      Recommended Study Partners
+    </h2>
+
+    <p class="text-gray-600 dark:text-gray-300 mb-6">
+      For: <strong>{{ email }}</strong>
+    </p>
+
+    {% if peers %}
+      <div class="grid gap-4">
+        {% for p in peers %}
+        <div class="p-4 bg-rose-50 dark:bg-gray-700 rounded-lg shadow-md hover:shadow-lg 
+                    hover:bg-rose-100 dark:hover:bg-gray-600 transition transform hover:scale-105">
+          <p class="text-rose-800 dark:text-rose-200 font-medium">{{ p }}</p>
+        </div>
+        {% endfor %}
+      </div>
+
+    {% else %}
+      <p class="text-gray-500 italic dark:text-gray-400">
+        No peers found yet. Try adding more data!
+      </p>
+    {% endif %}
+
+    <a href="/" class="block mt-6 text-rose-500 hover:underline dark:text-rose-300">
+      🏠 Back to Home
+    </a>
+  </div>
+
+  <script>
+    const themeToggle = document.getElementById("theme-toggle");
+    themeToggle.addEventListener("click", () => {
+      document.documentElement.classList.toggle("dark");
+      themeToggle.textContent = document.documentElement.classList.contains("dark")
+        ? "☀️ Light Mode"
+        : "🌙 Dark Mode";
+    });
+
+    document.querySelector(".animate-fade-in").style.opacity = 0;
+    setTimeout(() => document.querySelector(".animate-fade-in").style.transition = "opacity 1.5s ease-in", 50);
+    setTimeout(() => document.querySelector(".animate-fade-in").style.opacity = 1, 100);
+  </script>
+
+</body>
+</html>
